@@ -1,0 +1,51 @@
+body {
+    line-height: 150%;
+    background-image: url(../images/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: #ddd;
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif, 'Roboto', sans-serif;
+    font-size: 1.2em;
+    min-height: 100vh;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+
+
+
+/*footer*/
+
+#footernav {
+    background-color: #666666;
+    color: lightgray;
+    font-size: 0.7em;
+    text-align: center;
+    padding: 5px;
+    margin: 0 auto;
+}
+
+#footernav a:link,
+a:visited {
+    color: lightgray;
+}
+
+.copy {
+    padding: 5px;
+}
+
+.social {
+    padding: 5px;
+    margin: 0 auto;
+}
+
+@media (max-width: 840px) {
+   
+
+}
+
+@media (max-width: 375px) {
+   
+}

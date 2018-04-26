@@ -28,11 +28,13 @@ h1{
 }
 #CharTitle{
     color: #e7664e;
-    text-align: center;
-    margin: 5% 20%;
+    text-align: left;
+    margin-left: 5%;
     
 }
-
+h3{
+    color: #e7664e;
+}
 /*footer*/
 
 #footernav {

@@ -1,13 +1,11 @@
 $("document").ready(function() {
 
     //global variables
-    var currSelectedCharacter;
-    var currentDefender;
-    var combatants = [];
-    var indexofSelChar;
-    var attackResult;
-    var turnCounter = 1;
-    var killCount = 0;
+    
+
+
+
+
 
     //character objects
 
@@ -42,5 +40,15 @@ var characters = {
     }
 };
 
+for ( var key in characters){
 
+   var charDiv = $("<div class='character' data-name='" + characters[key].name + "'>");
+    var charName = $("<div class='character-name'>").text(characters[key].name);
+    var charImage = $("<img alt='image' class='character-image'>").attr("src", characters[key].img);
+    var charHealth = $("<div class='character-health'>").text(characters[key].health);
+    charDiv.append(charName).append(charImage).append(charHealth);
+
+    $("#charactersSection").append(charDiv);
+
+};
 });

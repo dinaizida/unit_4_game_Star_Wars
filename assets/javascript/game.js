@@ -131,7 +131,7 @@ $("document").ready(function() {
         if (myDef = ""){
         $(this).appendTo("#defender");
         myDef = $(this);
-        YourDefender = $(myDef).children().attr("data-name");
+        YourDefender = $myDef.attr("data-name");
         myDef.removeClass("move").addClass("charDefender");
 
         console.log(this);

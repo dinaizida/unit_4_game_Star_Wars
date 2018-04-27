@@ -69,6 +69,17 @@ $("document").ready(function() {
 
     };
 
+    function onClicFunction (){
+
+        for (var key in characters){
+  if (YourCharacter == characters[key].name){
+    attackerHP = characters[key].healthPoints;
+    attackerAP = characters[key].attackPower;
+    attackerCAP = characters[key].counterAttackPower;
+    characters[key].attack = "true";
+  }
+        }
+    };
     // select a character, move selected character to #available-to-attack div and hide current div with all characters
     $(".character").click(function() {
         if (myChar == "") {
@@ -78,34 +89,36 @@ $("document").ready(function() {
             myChar.removeClass("character").addClass("charAttacker");   
             
         }
-        // determine which character selected(clicked on) and assign its properties to variables 
-        if (YourCharacter == characters.kenobi.name) {
-            attackerHP = characters.kenobi.healthPoints;
-            attackerAP = characters.kenobi.attackPower;
-            attackerCAP = characters.kenobi.counterAttackPower;
-            characters.kenobi.attack = "true";
+ onClicFunction();
 
-        } else if (YourCharacter == characters.skywalker.name) {
-            attackerHP = characters.skywalker.healthPoints;
-            attackerAP = characters.skywalker.attackPower;
-            attackerCAP = characters.skywalker.counterAttackPower;
-            characters.skywalker.attack = "true";
+        // // determine which character selected(clicked on) and assign its properties to variables 
+        // if (YourCharacter == characters.kenobi.name) {
+        //     attackerHP = characters.kenobi.healthPoints;
+        //     attackerAP = characters.kenobi.attackPower;
+        //     attackerCAP = characters.kenobi.counterAttackPower;
+        //     characters.kenobi.attack = "true";
 
-        } else if (YourCharacter == characters.sideuous.name) {
-            attackerHP = characters.sideuous.healthPoints;
-            attackerAP = characters.sideuous.attackPower;
-            attackerCAP = characters.sideuous.counterAttackPower;
-            characters.sideuous.attack = "true";
+        // } else if (YourCharacter == characters.skywalker.name) {
+        //     attackerHP = characters.skywalker.healthPoints;
+        //     attackerAP = characters.skywalker.attackPower;
+        //     attackerCAP = characters.skywalker.counterAttackPower;
+        //     characters.skywalker.attack = "true";
 
-        } else if (YourCharacter == characters.maul.name) {
-            attackerHP = characters.maul.healthPoints;
-            attackerAP = characters.maul.attackPower;
-            attackerCAP = characters.maul.counterAttackPower;
-            characters.maul.attack = "true";
+        // } else if (YourCharacter == characters.sideuous.name) {
+        //     attackerHP = characters.sideuous.healthPoints;
+        //     attackerAP = characters.sideuous.attackPower;
+        //     attackerCAP = characters.sideuous.counterAttackPower;
+        //     characters.sideuous.attack = "true";
 
-        }
+        // } else if (YourCharacter == characters.maul.name) {
+        //     attackerHP = characters.maul.healthPoints;
+        //     attackerAP = characters.maul.attackPower;
+        //     attackerCAP = characters.maul.counterAttackPower;
+        //     characters.maul.attack = "true";
 
- // clones the three remaining characters to "Enemies available to attack" three separate divs.
+        // }
+
+        // clones the three remaining characters to "Enemies available to attack" three separate divs.
         // // //display three other characters inside of avalable to attack div
 
         for (var key in characters) {
@@ -115,58 +128,70 @@ $("document").ready(function() {
                 charImage = $("<img alt='image' class='character-image'>").attr("src", characters[key].img);
                 charHealth = $("<div class='character-health'>").text(characters[key].healthPoints);
                 charDiv.append(charName).append(charImage).append(charHealth);
-                $("#availableTOattack").append(charDiv);
+                $("#availabletoattack").append(charDiv);
             };
         };
 
         // hide all characters on the top
         $("#charactersSection").hide();
-        debugger;
+        // debugger;
 
     });
 
     // click on any of the characters in the " available to attack" section, the clicked char moves to Defender section
     // the other char remins in the current section
-    $(".move").click(function() {
-        if (myDef = ""){
+    // $(".move").click(function() {
+    //     if (myDef == ""){
+    //     $(this).appendTo("#defender");
+    //     myDef = $(this);
+    //     YourDefender = myDef.attr("data-name");
+    //     myDef.removeClass("move").addClass("charDefender");
+
+    //     console.log(this);
+    //     alert("test this");
+        
+    //     }
+
+    $(document).on("click", ".move", function() {
+        console.log(myDef);
+        
         $(this).appendTo("#defender");
         myDef = $(this);
-        YourDefender = $myDef.attr("data-name");
+        YourDefender = myDef.attr("data-name");
         myDef.removeClass("move").addClass("charDefender");
 
         console.log(this);
         alert("test this");
-        // $(".youDefeated").empty();
-        }
-
+        
+       onClicFunction();
         //determine who is currently "Defender" and assign
         // that person to the character array's properties.
 
-        if (YourDefender == characters.kenobi.name) {
-            attackerHP = characters.kenobi.healthPoints;
-            attackerAP = characters.kenobi.attackPower;
-            attackerCAP = characters.kenobi.counterAttackPower;
-            characters.kenobi.attack = "true";
+        // if (YourDefender == characters.kenobi.name) {
+        //     attackerHP = characters.kenobi.healthPoints;
+        //     attackerAP = characters.kenobi.attackPower;
+        //     attackerCAP = characters.kenobi.counterAttackPower;
+        //     characters.kenobi.attack = "true";
 
-        } else if (YourDefender == characters.skywalker.name) {
-            attackerHP = characters.skywalker.healthPoints;
-            attackerAP = characters.skywalker.attackPower;
-            attackerCAP = characters.skywalker.counterAttackPower;
-            characters.skywalker.attack = "true";
+        // } else if (YourDefender == characters.skywalker.name) {
+        //     attackerHP = characters.skywalker.healthPoints;
+        //     attackerAP = characters.skywalker.attackPower;
+        //     attackerCAP = characters.skywalker.counterAttackPower;
+        //     characters.skywalker.attack = "true";
 
-        } else if (YourDefender == characters.sideuous.name) {
-            attackerHP = characters.sideuous.healthPoints;
-            attackerAP = characters.sideuous.attackPower;
-            attackerCAP = characters.sideuous.counterAttackPower;
-            characters.sideuous.attack = "true";
+        // } else if (YourDefender == characters.sideuous.name) {
+        //     attackerHP = characters.sideuous.healthPoints;
+        //     attackerAP = characters.sideuous.attackPower;
+        //     attackerCAP = characters.sideuous.counterAttackPower;
+        //     characters.sideuous.attack = "true";
 
-        } else if (YourDefender == characters.maul.name) {
-            attackerHP = characters.maul.healthPoints;
-            attackerAP = characters.maul.attackPower;
-            attackerCAP = characters.maul.counterAttackPower;
-            characters.maul.attack = "true";
+        // } else if (YourDefender == characters.maul.name) {
+        //     attackerHP = characters.maul.healthPoints;
+        //     attackerAP = characters.maul.attackPower;
+        //     attackerCAP = characters.maul.counterAttackPower;
+        //     characters.maul.attack = "true";
 
-        }
+        // }
 
     });
 

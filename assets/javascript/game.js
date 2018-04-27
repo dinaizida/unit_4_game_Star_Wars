@@ -68,7 +68,7 @@ $("document").ready(function() {
         $("#charactersSection").append(charDiv);
 
     };
-
+// determine which character selected(when clicked on) and assign its properties to variables 
     function onClicFunction (){
 
         for (var key in characters){
@@ -81,7 +81,9 @@ $("document").ready(function() {
         }
     };
     // select a character, move selected character to #available-to-attack div and hide current div with all characters
-    $(".character").click(function() {
+    $(document).on("click", ".character", function() {
+    
+    // $(".character").click(function() {
         if (myChar == "") {
             $(this).appendTo("#selectedCharacter");
             myChar = $(this);
@@ -153,15 +155,15 @@ $("document").ready(function() {
     //     }
 
     $(document).on("click", ".move", function() {
-        console.log(myDef);
+       
         
         $(this).appendTo("#defender");
         myDef = $(this);
         YourDefender = myDef.attr("data-name");
         myDef.removeClass("move").addClass("charDefender");
 
-        console.log(this);
-        alert("test this");
+        
+        
         
        onClicFunction();
         //determine who is currently "Defender" and assign

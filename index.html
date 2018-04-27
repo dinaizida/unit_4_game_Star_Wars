@@ -19,51 +19,67 @@
 </head>
 
 <body>
-    <div class = "gameScreen container-flex">
-        <div class ="row">
-            <div class = "col-lg-12 col-md-12 col-sm- 12 cal-xs-12">
+    <div class="gameScreen container-flex">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm- 12 cal-xs-12">
                 <h1>Star Wars RPG Game</h1>
             </div>
         </div>
-            <div id = "mainGame">
-                <div class ="row">
-                    <div id ="charactersSection" class = "col-lg-10 col-md-10 col-sm- 10 cal-xs-10">
-                    </div>
-                </div> 
-                <div class ="row">
-                    <div class = "sectionTitle col-lg-10 col-md-10 col-sm- 10 cal-xs-10"><h3 id="CharTitle">Your Character</h3></div>
-                </div>   
-                <div class ="row">
-                    <div id = "selectedCharacter" class = "col-ld-4 col md-4 col-sm-4 col-xl-4">
-                        <div id="playerCharacter"></div>
-                    </div>
-                    <div class = " sectionTitle col-ld-4 col md-4 col-sm-4 col-xl-4"><h2>Fight Secton</h2>
-                        <div id="fightSection">
-                                <button id = "attackButton" type="button" class="btn btn-raised btn-warning">ATTACK</button>
-                                <div class="jumbotron" id="gameStatisticMessage"></div>
-                        </div>
-                    </div>
-                    <div id = "actionSection">
-                        <div class = "sectionTitle col-ld-3 col md-3 col-sm-3 col-xl-3">
-                            <div id = "defender"></div>
-                        </div>
+        <div id="mainGame">
+            <div class="row">
+                <div id="charactersSection" class="col-lg-10 col-md-10 col-sm- 10 cal-xs-10">
+                </div>
+            </div>
+            <div class="row">
+                <div class="sectionTitle col-lg-10 col-md-10 col-sm- 10 cal-xs-10">
+                    <h3 id="CharTitle">Your Character</h3></div>
+            </div>
+            <div class="row">
+                <div id="selectedCharacter" class="col-ld-4 col md-4 col-sm-4 col-xl-4">
+                    <div id="playerCharacter"></div>
+                </div>
+                <div class=" sectionTitle col-ld-4 col md-4 col-sm-4 col-xl-4">
+                    <h2>Fight Secton</h2>
+                    <div id="fightSection">
+                        <button type="button" class=" attackButton btn btn-raised btn-warning">ATTACK</button>
+                        <div class="jumbotron" id="gameStatisticMessage">
 
+                            <!--  text that shows up when a play attacks.-->
+                            <div class="row padLeft">
+                                <div class="col-12">
+                                    <br>
+                                    <p class="youAttacked">youAttacked</p>
+                                    <p class="attackedBack">attackedBack</p>
+                                    <p class="youDefeated">youDefeated</p>
+                                    <p class="youWon">youWon</p>
+                                    <p class="youLose">youLose</p>
+                                    <p class="noEnemy">noEnemy</p>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-                <div class ="row">
-
-                        <div class = "sectionTitle col-ld-12 col md-12 col-sm-12 col-xl-12">
-                            <div class="sectionTitle"><h3>Enemies Available to Attack</h3></div>
-                            <div id="availableTOattack"></div>
-                            
-                        </div>
-                    
+                <div id="actionSection">
+                    <div class="sectionTitle col-ld-3 col md-3 col-sm-3 col-xl-3">
+                        <div id="defender"></div>
+                    </div>
 
                 </div>
             </div>
+            <div class="row">
+                <div class="sectionTitle col-ld-12 col md-12 col-sm-12 col-xl-12">
+                    <div class="sectionTitle">
+                        <h3>Enemies Available to Attack</h3></div>
+                    <div id="availableTOattack">
+                       
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
     </div>
-    
 
     <div id="footernav" class="navbar navbar-default fixed-bottom">
         <div class="container">

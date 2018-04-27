@@ -170,6 +170,8 @@ $("document").ready(function() {
             if ($("#defender").children().length == 0) {
                 $(".noEnemy").html("No enemy here.");
             }
+
+
     
             if (!(attackerHP < 1) || !(defenderHP < 1)) {
     
@@ -218,8 +220,8 @@ $("document").ready(function() {
             }
 
             // if all enemies have been defeated and the attacker still has health, then the player wins
-     		if ($(".move").children().length == 0){
-     		 
+     		// if ($(".move").children().length == 0 ){
+                if (($(".move").children().length == 0 ) && (attackerHP > 0) && (defenderHP < 0)) {
                 // clear out the other paragraphs and let user know they won.
                 $(".youAttacked").empty();
                 $(".attackedBack").empty();
@@ -250,6 +252,7 @@ $("document").ready(function() {
                    $(".youAttacked").empty();
                     $(".attackedBack").empty();
                    $(".youDefeated").empty();
+                   $("#selectedCharacter").empty();
                    $(".youLose").html("You've been defeated...GAME OVER!!!")
   
                     // When you click "Restart" the game begins again. 

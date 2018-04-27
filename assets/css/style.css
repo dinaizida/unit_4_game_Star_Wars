@@ -30,13 +30,15 @@ h1{
 #availabletoattack {
     margin-bottom: 50px;
 }
-#CharTitle{
+.CharTitle{
     color: #e7664e;
-    text-align: left;
-    margin-left: 5%;
-    
+    text-align: center;
+    margin: auto;
 }
 h3{
+    color: #e7664e;
+}
+#statistic {
     color: #e7664e;
 }
 /*footer*/

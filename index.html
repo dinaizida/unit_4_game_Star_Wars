@@ -27,55 +27,54 @@
         </div>
         <div id="mainGame">
             <div class="row">
-                <div id="charactersSection" class="col-lg-10 col-md-10 col-sm- 10 cal-xs-10">
+                <div class="col-lg-12 col-md-12 col-sm- 12 cal-xs-12">
+                <h3 id="CharTitle">Choose Your Character</h3>
                 </div>
             </div>
+            <!-- all charactersSection row-->
             <div class="row">
-                <div class="sectionTitle col-lg-10 col-md-10 col-sm- 10 cal-xs-10">
-                    <h3 id="CharTitle">Your Character</h3></div>
+                <div id="charactersSection" class="col-lg-10 col-md-10 col-sm- 10 cal-xs-10">
+                        <!-- divs rendered from JS-->
+                </div>
             </div>
+            <!-- middle row with your/attacker character, fight section, defender character-->
             <div class="row">
                 <div id="selectedCharacter" class="col-ld-4 col md-4 col-sm-4 col-xl-4">
-                    <div id="playerCharacter"></div>
-                </div>
-                <div class=" sectionTitle col-ld-4 col md-4 col-sm-4 col-xl-4">
-                    <h2>Fight Secton</h2>
-                    <div id="fightSection">
-                        <button type="button" class=" attackButton btn btn-raised btn-warning">ATTACK</button>
-                        <div class="jumbotron" id="gameStatisticMessage">
-
-                            <!--  text that shows up when a play attacks.-->
-                            <div class="row padLeft">
-                                <div class="col-12">
-                                    <br>
-                                    <p class="youAttacked">youAttacked</p>
-                                    <p class="attackedBack">attackedBack</p>
-                                    <p class="youDefeated">youDefeated</p>
-                                    <p class="youWon">youWon</p>
-                                    <p class="youLose">youLose</p>
-                                    <p class="noEnemy">noEnemy</p>
-                                </div>
-                            </div>
-
+                    <h3 class="CharTitle">Attacker</h3>
+                        <div id="playerCharacter">
+                        <!-- div rendered from JS-->
                         </div>
+                </div>
+                <div id="fightSection" class=" sectionTitle col-ld-4 col md-4 col-sm-4 col-xl-4">
+                    <h2>Fight Secton</h2>
+                       <!-- <div id="fightSection"></div> -->
+                        <button type="button" class=" attackButton btn btn-raised btn-warning">LAUNCH AN ATTAK!</button>
+                        <div class="jumbotron" id="statistic">
+                            <!--  text that shows up when attack button clicked.-->
+                                    <p class="youAttacked"></p>
+                                    <p class="attackedBack"></p>
+                                    <p class="youDefeated"></p>
+                                    <p class="youWon"></p>
+                                    <p class="youLose"></p>
+                                    <p class="noEnemy"></p>
+                        </div>
+                </div>
+                <div class="sectionTitle col-ld-4 col md-4 col-sm-4 col-xl-4">
+                    <h3 class="CharTitle">Defender</h3>
+                    <div id="defender">
+                    <!-- div rendered from JS-->
                     </div>
                 </div>
-                <div id="actionSection">
-                    <div class="sectionTitle col-ld-3 col md-3 col-sm-3 col-xl-3">
-                        <div id="defender"></div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="sectionTitle col-ld-12 col md-12 col-sm-12 col-xl-12">
-                    <div class="sectionTitle">
-                        <h3>Enemies Available to Attack</h3></div>
-                    <div id="availabletoattack">
-                       
-                    </div>
-                </div>
-
+            <!-- availabletoattack row-->
+            <div class = "row">    
+                <div class = "col-ld-2 col md-2 col-sm-2 col-xl-2"></div>
+                <div class="sectionTitle col-ld-8 col md-8 col-sm-8 col-xl-8">
+                    <h3 class="CharTitle">Enemies Available to Attack</h3>
+                        <div id="availabletoattack">
+                        <!-- divs rendered from JS-->
+                        </div>
+                <div class = "col-ld-2 col md-2 col-sm-2 col-xl-2"></div>
+                </div> 
             </div>
         </div>
 

@@ -22,12 +22,12 @@ h1{
     background-color: black;
     opacity: 0.8;
 }
-#charactersSection, #availableTOattack {
+#charactersSection, #availabletoattack {
     display: flex;
     justify-content: space-between;
     margin: 20px auto;
 }
-#availableTOattack {
+#availabletoattack {
     margin-bottom: 50px;
 }
 #CharTitle{

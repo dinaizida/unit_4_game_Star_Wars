@@ -17,7 +17,7 @@ var myDef = "";
 
 $("document").ready(function() {
 
-    //character objects
+    //create a characters object that include an object for each character
 
     var characters = {
         'kenobi': {
@@ -57,7 +57,7 @@ $("document").ready(function() {
 
         }
     };
-    //display all characters on the top of the screen
+    //display all characters on the top of the screen in the characters section
     for (var key in characters) {
         var charDiv = $("<div class='character' data-name='" + characters[key].name + "'>");
         var charName = $("<div class='character-name'>").text(characters[key].name);
@@ -68,60 +68,32 @@ $("document").ready(function() {
         $("#charactersSection").append(charDiv);
 
     };
-// determine which character selected(when clicked on) and assign its properties to variables 
+// determine which character selected(when clicked on) and assign its properties to 
+//variables that will be using in the game calculation report in the fight section
     function onClicFunction (){
 
         for (var key in characters){
-  if (YourCharacter == characters[key].name){
-    attackerHP = characters[key].healthPoints;
-    attackerAP = characters[key].attackPower;
-    attackerCAP = characters[key].counterAttackPower;
-    characters[key].attack = "true";
-  }
+            if (YourCharacter == characters[key].name){
+                attackerHP = characters[key].healthPoints;
+                attackerAP = characters[key].attackPower;
+                attackerCAP = characters[key].counterAttackPower;
+                characters[key].attack = "true";
+            }
         }
     };
     // select a character, move selected character to #available-to-attack div and hide current div with all characters
     $(document).on("click", ".character", function() {
     
-    // $(".character").click(function() {
         if (myChar == "") {
             $(this).appendTo("#selectedCharacter");
             myChar = $(this);
             YourCharacter = myChar.attr("data-name");
             myChar.removeClass("character").addClass("charAttacker");   
-            
         }
- onClicFunction();
+        onClicFunction();
 
-        // // determine which character selected(clicked on) and assign its properties to variables 
-        // if (YourCharacter == characters.kenobi.name) {
-        //     attackerHP = characters.kenobi.healthPoints;
-        //     attackerAP = characters.kenobi.attackPower;
-        //     attackerCAP = characters.kenobi.counterAttackPower;
-        //     characters.kenobi.attack = "true";
-
-        // } else if (YourCharacter == characters.skywalker.name) {
-        //     attackerHP = characters.skywalker.healthPoints;
-        //     attackerAP = characters.skywalker.attackPower;
-        //     attackerCAP = characters.skywalker.counterAttackPower;
-        //     characters.skywalker.attack = "true";
-
-        // } else if (YourCharacter == characters.sideuous.name) {
-        //     attackerHP = characters.sideuous.healthPoints;
-        //     attackerAP = characters.sideuous.attackPower;
-        //     attackerCAP = characters.sideuous.counterAttackPower;
-        //     characters.sideuous.attack = "true";
-
-        // } else if (YourCharacter == characters.maul.name) {
-        //     attackerHP = characters.maul.healthPoints;
-        //     attackerAP = characters.maul.attackPower;
-        //     attackerCAP = characters.maul.counterAttackPower;
-        //     characters.maul.attack = "true";
-
-        // }
-
-        // clones the three remaining characters to "Enemies available to attack" three separate divs.
-        // // //display three other characters inside of avalable to attack div
+        // moves the three remaining characters to " available to attack" section .
+        //displays three other characters inside of avalable to attack div
 
         for (var key in characters) {
             if (characters[key].attack === "false") {
@@ -136,65 +108,18 @@ $("document").ready(function() {
 
         // hide all characters on the top
         $("#charactersSection").hide();
-        // debugger;
+        
 
     });
-
-    // click on any of the characters in the " available to attack" section, the clicked char moves to Defender section
-    // the other char remins in the current section
-    // $(".move").click(function() {
-    //     if (myDef == ""){
-    //     $(this).appendTo("#defender");
-    //     myDef = $(this);
-    //     YourDefender = myDef.attr("data-name");
-    //     myDef.removeClass("move").addClass("charDefender");
-
-    //     console.log(this);
-    //     alert("test this");
-        
-    //     }
-
+//select defender and move him to defender div
     $(document).on("click", ".move", function() {
-       
         
         $(this).appendTo("#defender");
         myDef = $(this);
         YourDefender = myDef.attr("data-name");
         myDef.removeClass("move").addClass("charDefender");
 
-        
-        
-        
-       onClicFunction();
-        //determine who is currently "Defender" and assign
-        // that person to the character array's properties.
-
-        // if (YourDefender == characters.kenobi.name) {
-        //     attackerHP = characters.kenobi.healthPoints;
-        //     attackerAP = characters.kenobi.attackPower;
-        //     attackerCAP = characters.kenobi.counterAttackPower;
-        //     characters.kenobi.attack = "true";
-
-        // } else if (YourDefender == characters.skywalker.name) {
-        //     attackerHP = characters.skywalker.healthPoints;
-        //     attackerAP = characters.skywalker.attackPower;
-        //     attackerCAP = characters.skywalker.counterAttackPower;
-        //     characters.skywalker.attack = "true";
-
-        // } else if (YourDefender == characters.sideuous.name) {
-        //     attackerHP = characters.sideuous.healthPoints;
-        //     attackerAP = characters.sideuous.attackPower;
-        //     attackerCAP = characters.sideuous.counterAttackPower;
-        //     characters.sideuous.attack = "true";
-
-        // } else if (YourDefender == characters.maul.name) {
-        //     attackerHP = characters.maul.healthPoints;
-        //     attackerAP = characters.maul.attackPower;
-        //     attackerCAP = characters.maul.counterAttackPower;
-        //     characters.maul.attack = "true";
-
-        // }
-
+        onClicFunction();
     });
 
    

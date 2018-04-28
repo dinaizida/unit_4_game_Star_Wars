@@ -1,45 +1,51 @@
 body {
     line-height: 150%;
-    background-image: url(../images/background.jpg);
+    background-image: url(../images/background.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     color: #ddd;
     text-align: center;
     font-family: 'Noto Sans', sans-serif, 'Roboto', sans-serif;
-    font-size: 1.2em;
+    font-size: 1em;
+    width: 100vw;
     min-height: 100vh;
-    font-size: 1.2em;
     text-align: center;
 }
 h1{
     text-align: center;
+    margin: 5% auto;
 }
 .gameScreen{
-    width: 100vw;
-    height: 100vh; 
-  
-    background-color: black;
-    opacity: 0.8;
+    opacity: 0.7; 
 }
-#charactersSection, #availabletoattack {
+.attackButton {
+    margin: 15px auto;
+}
+#charactersSection {
     display: flex;
     justify-content: space-between;
     margin: 30px auto;
 }
+#fightSection {
+    margin: 10px auto;
+}
 #availabletoattack {
-    margin-bottom: 50px;
+    margin-bottom: 5%;
+    display: flex;
+   justify-content: space-around;
 }
 .CharTitle{
     color: #e7664e;
     text-align: center;
-    margin: auto;
+    margin: 10px auto;
 }
 h3{
     color: #e7664e;
 }
 #statistic {
     color: #e7664e;
+    margin: 10px auto;
 }
 /*footer*/
 
@@ -72,5 +78,28 @@ a:visited {
 }
 
 @media (max-width: 375px) {
-   
+
+    body{
+        font-size: 0.7em;
+    }
+
+    h1{
+        font-size: 1.4em;
+    }
+
+    h3,h2{
+        font-size: 1.2em;
+    }
+    #statistic{
+        font-size: 1em;
+    }
+    #charactersSection, #availabletoattack {
+        margin:15px auto;
+    }
+    .attackButton {
+        margin: 5px auto;
+    }
+    #statistic {
+        margin: 5px auto;
+    }
 }

@@ -15,24 +15,30 @@ var YourDefender;
 var myChar = "";
 var myDef = "";
 
-function resetGame() {	
-	
-	$("#charactersSection").show();
+function playAudio(gameAudio) {
+    var audio = new Audio(gameAudio);
+    audio.play();
+    audio.volume = .5;
+}
 
-	$(".restart").hide();
-	$(".attackButton").show();
+function resetGame() {
 
-	// reset myChar and myDef to equal nothing.
-	var myChar = "";
-	var myDef = "";
+    $("#charactersSection").show();
 
-	// delete all in-game text.
-	$(".youAttacked").empty();
-	$(".attackedBack").empty();
-	$(".youDefeated").empty();
-	$(".youWon").empty();
-	$(".youLose").empty();
-	$(".noEnemy").empty();
+    $(".restart").hide();
+    $(".attackButton").show();
+
+    // reset myChar and myDef to equal nothing.
+    var myChar = "";
+    var myDef = "";
+
+    // delete all in-game text.
+    $(".youAttacked").empty();
+    $(".attackedBack").empty();
+    $(".youDefeated").empty();
+    $(".youWon").empty();
+    $(".youLose").empty();
+    $(".noEnemy").empty();
 
 };
 
@@ -92,10 +98,10 @@ $("document").ready(function() {
     };
     // determine which character selected(when clicked on) and assign its properties to 
     //variables that will be using in the game calculation report in the fight section
-    function attackerAssignProperties (){
+    function attackerAssignProperties() {
 
-        for (var key in characters){
-            if (YourCharacter == characters[key].name){
+        for (var key in characters) {
+            if (YourCharacter == characters[key].name) {
                 attackerHP = characters[key].healthPoints;
                 attackerAP = characters[key].attackPower;
                 attackerCAP = characters[key].counterAttackPower;
@@ -105,10 +111,10 @@ $("document").ready(function() {
     };
     // determine which character selected(when clicked on) and assign its properties to 
     //variables that will be using in the game calculation report in the fight section
-    function defenderAssignProperties (){
+    function defenderAssignProperties() {
 
-        for (var key in characters){
-            if (YourDefender == characters[key].name){
+        for (var key in characters) {
+            if (YourDefender == characters[key].name) {
                 defenderHP = characters[key].healthPoints;
                 defenderAP = characters[key].attackPower;
                 defenderCAP = characters[key].counterAttackPower;
@@ -118,12 +124,12 @@ $("document").ready(function() {
     };
     // select a character, move selected character to #available-to-attack div and hide current div with all characters
     $(document).on("click", ".character", function() {
-    
+
         if (myChar == "") {
             $(this).appendTo("#selectedCharacter");
             myChar = $(this);
             YourCharacter = myChar.attr("data-name");
-            myChar.removeClass("character").addClass("charAttacker");   
+            myChar.removeClass("character").addClass("charAttacker");
         }
         // determine which character selected(when clicked on) and assign its properties to 
         //variables that will be using in the game calculation report in the fight section
@@ -146,12 +152,11 @@ $("document").ready(function() {
         // hide all characters on the top
         $("#charactersSection").hide();
         $("#CharTitle").hide();
-        
 
     });
     //select defender and move him to defender div
     $(document).on("click", ".move", function() {
-        
+
         $(this).appendTo("#defender");
         myDef = $(this);
         YourDefender = myDef.attr("data-name");
@@ -163,108 +168,98 @@ $("document").ready(function() {
 
     });
 
-        // when the user clicks attack, the player/Your Character's Health Points go down based on the counter attack 
-        // property of the "Defender".Their counter attack decreases your health.
-        $(".attackButton").click(function(){
-            // if attacker clicks attack button when no enemy in the avalable to attack div
-            if ($("#defender").children().length == 0) {
-                $(".noEnemy").html("No enemy here.");
-            }
+    // when the user clicks attack, the player/Your Character's Health Points go down based on the counter attack 
+    // property of the "Defender".Their counter attack decreases attacker health.
+    $(".attackButton").click(function() {
+        playAudio('assets/sounds/attack_btn.mp3');
+       
 
+        if (!(attackerHP < 1) || !(defenderHP < 1)) {
+          
+            // when button is clicked (if both players healthpoints are not 0, 
+            // the game subtracks the defendersCAP from the attackers HP.)
 
-    
-            if (!(attackerHP < 1) || !(defenderHP < 1)) {
-    
-                // when button is clicked (if both players healthpoints are not 0, 
-                // the game subtracks the defendersCAP from the attackers HP.)
-                
-                attackerHP = (attackerHP - defenderCAP);
+            attackerHP = (attackerHP - defenderCAP);
 
-                console.log("attacker HP: " +attackerHP);
-                console.log("attacker AP: " +attackerAP);
-                
-                
-                
-                // writing the attacker/Your Character's new healthpoints to the html. 
-              
-                // writing the text You attacked ... for ... damage".
-                $(".youAttacked").html("You attacked " + YourDefender + " for " + attackerAP + " damage.");
-                $(".attackerHP").html("Your Health Points : " + attackerHP );
-                // when button is clicked (if both players healthpoints are not 0, 
-                // the game subtracks the attackers AP points from the defenders HP.)
-                defenderHP = (defenderHP - attackerAP);
-                console.log("defender HP: " +defenderHP);
-                
-                // writing the text ... attacked you back for ... damage."
-                $(".attackedBack").html(YourDefender + " attacked you back for " + defenderCAP + " damage.");
-                $(".defenderHP").html("Your Health Points : " + defenderHP );
+            console.log("attacker HP: " + attackerHP);
+            console.log("attacker AP: " + attackerAP);
 
-                attackerAP += characters[key].attackPower +1 ;
-                console.log('new attacker AP after added base AP : ' +attackerAP);
-                
-            }
-            // if your character defeats the defender.
-     		if (defenderHP <= 0) {
-                
+            // writing the attacker/Your Character's new healthpoints to the html. 
 
-                // clear text from the bottom and add defeated text.
-                $(".youAttacked").empty();
-                $(".attackedBack").empty();
-                $(".defenderHP").empty();
-                $(".youDefeated").html("You have defeated " + YourDefender + ", you can choose to fight another enemy.");
+            // writing the text You attacked ... for ... damage".
+            $(".youAttacked").html("You attacked " + YourDefender + " for " + attackerAP + " damage.");
+            $(".attackerHP").html("Your Health Points : " + attackerHP);
+            // when button is clicked (if both players healthpoints are not 0, 
+            // the game subtracks the attackers AP points from the defenders HP.)
+            defenderHP = (defenderHP - attackerAP);
+            console.log("defender HP: " + defenderHP);
 
-                // remove defender from the page.
-                $("#defender").empty();
-                
+            // writing the text ... attacked you back for ... damage."
+            $(".attackedBack").html(YourDefender + " attacked you back for " + defenderCAP + " damage.");
+            $(".defenderHP").html("Your Health Points : " + defenderHP);
 
-            }
+            attackerAP += characters[key].attackPower + 1;
+            console.log('new attacker AP after added base AP : ' + attackerAP);
 
-            // if all enemies have been defeated and the attacker still has health, then the player wins
-     		// if ($(".move").children().length == 0 ){
-                if (($(".move").children().length == 0 ) && (attackerHP > 0) && (defenderHP < 0)) {
-                // clear out the other paragraphs and let user know they won.
-                $(".youAttacked").empty();
-                $(".attackedBack").empty();
-                $(".youDefeated").empty();
-                $(".noEnemy").empty();
-                $(".youWon").html("You Won!!!! GAME OVER!!!"); 
-  
-                // show the restart button. 
-                $(".restart").show();
-  
-                // When you click "Restart" the game begins again. 
-                $(".restart").click(function(){
-                    location.reload(true);
-                });
-                                 
-               }
-  
-               // if your characters hp = 0 then you lose.
-               if (attackerHP <= 0) {
-  
-                   // show the restart button.
-                   $(".restart").show();
-  
-                   // hide the attack button.
-                   $(".attackButton").hide();
-  
-                   // You lose.
-                   $(".youAttacked").empty();
-                    $(".attackedBack").empty();
-                   $(".youDefeated").empty();
-                   $("#selectedCharacter").empty();
-                   $(".youLose").html("You've been defeated...GAME OVER!!!")
-  
-                    // When you click "Restart" the game begins again. 
-                    $(".restart").click(function(){
-                        location.reload(true);
-                    });
-  
-               }      
-    
-        }); 
-    
-    
+        }
+        // if your character defeats the defender.
+        if (defenderHP <= 0) {
 
+            // clear text from the bottom and add defeated text.
+            $(".youAttacked").empty();
+            $(".attackedBack").empty();
+            $(".defenderHP").empty();
+            $(".youDefeated").html("You have defeated " + YourDefender + ", you can choose to fight another enemy.");
+            playAudio('assets/sounds/enemy_d.mp3');
+            // remove defender from the page.
+            $("#defender").empty();
+
+        }
+
+        // if all enemies have been defeated and the attacker still has health, then the player wins
+
+        if (($(".move").children().length == 0) && (attackerHP > 0) && (defenderHP < 0)) {
+            // clear out the other paragraphs and let user know they won.
+            $(".youAttacked").empty();
+            $(".attackedBack").empty();
+            $(".youDefeated").empty();
+            $(".noEnemy").empty();
+            $(".youWon").html("You Won!!!! GAME OVER!!!");
+            playAudio('assets/sounds/win.mp3');
+            // show the restart button. 
+            $(".restart").show();
+
+            // When you click "Restart" the game begins again. 
+            $(".restart").click(function() {
+                location.reload(true);
+            });
+
+        }
+
+        // if your characters hp = 0 then you lose.
+        if (attackerHP <= 0) {
+
+            // show the restart button.
+            $(".restart").show();
+
+            // hide the attack button.
+            $(".attackButton").hide();
+
+            // You lose.
+            $(".youAttacked").empty();
+            $(".attackedBack").empty();
+            $(".youDefeated").empty();
+            $("#selectedCharacter").empty();
+            $(".youLose").html("You've been defeated...GAME OVER!!!")
+            playAudio('assets/sounds/attacker_d.mp3');
+
+            // When you click "Restart" the game begins again. 
+            $(".restart").click(function() {
+                location.reload(true);
+            });
+
+        }
+
+    });
 
 });

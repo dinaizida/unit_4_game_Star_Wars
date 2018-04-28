@@ -28,11 +28,11 @@ function resetGame() {
     $(".restart").hide();
     $(".attackButton").show();
 
-    // reset myChar and myDef to equal nothing.
+    
     var myChar = "";
     var myDef = "";
 
-    // delete all in-game text.
+    // delete all  text.
     $(".youAttacked").empty();
     $(".attackedBack").empty();
     $(".youDefeated").empty();
@@ -96,7 +96,7 @@ $("document").ready(function() {
         $("#charactersSection").append(charDiv);
 
     };
-    // determine which character selected(when clicked on) and assign its properties to 
+    // determine which character selected(when clicked on) AS ATTACKER and assign its properties to 
     //variables that will be using in the game calculation report in the fight section
     function attackerAssignProperties() {
 
@@ -109,7 +109,7 @@ $("document").ready(function() {
             }
         }
     };
-    // determine which character selected(when clicked on) and assign its properties to 
+    // determine which character selected(when clicked on) AS DEFENDER and assign its properties to 
     //variables that will be using in the game calculation report in the fight section
     function defenderAssignProperties() {
 
@@ -131,8 +131,7 @@ $("document").ready(function() {
             YourCharacter = myChar.attr("data-name");
             myChar.removeClass("character").addClass("charAttacker");
         }
-        // determine which character selected(when clicked on) and assign its properties to 
-        //variables that will be using in the game calculation report in the fight section
+        
         attackerAssignProperties();
 
         // moves the three remaining characters to " available to attack" section .
@@ -161,14 +160,13 @@ $("document").ready(function() {
         myDef = $(this);
         YourDefender = myDef.attr("data-name");
         myDef.removeClass("move").addClass("charDefender");
-        // determine which character selected(when clicked on) and assign its properties to 
-        //variables that will be using in the game calculation report in the fight section
+        
         defenderAssignProperties();
         $(".youDefeated").empty();
 
     });
 
-    // when the user clicks attack, the player/Your Character's Health Points go down based on the counter attack 
+    // when the user clicks attack, the attackers's Health Points go down using  the original AttackPower 
     // property of the "Defender".Their counter attack decreases attacker health.
     $(".attackButton").click(function() {
         playAudio('assets/sounds/attack_btn.mp3');

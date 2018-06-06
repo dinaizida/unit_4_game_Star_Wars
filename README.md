@@ -24,3 +24,5 @@ Technologies Used: HTML, CSS, jQuery, Material Design front-end component librar
 
 
 ![Screen Shot](https://github.com/dinaizida/unit_4_game_Star_Wars/blob/master/assets/images/git.png)
+
+![Screen Shot](https://github.com/dinaizida/unit_4_game_Star_Wars/blob/master/assets/images/git1.png)
